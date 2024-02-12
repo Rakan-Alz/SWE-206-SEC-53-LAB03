@@ -1,43 +1,43 @@
 package lab03;
 
-public class Sorter {
+//Sorter.java
 
-    public static void sort(int[] arr) {
-        int n = arr.length;
+	// Sorter.java
 
-        // Traverse through all elements in the array
-        for (int i = 0; i < n - 1; i++) {
-            // Last i elements are already sorted, so we don't need to check them
-            for (int j = 0; j < n - i - 1; j++) {
-                // Swap if the element found is greater than the next element
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-    }
+	public class Sorter {
 
-    public static void main(String[] args) {
-        // Example usage:
-        int[] myArray = {64, 25, 12, 22, 11};
+	    public static void main(String[] args) {
+	        // Main method for testing
+	        int[] array = {64, 25, 12, 22, 11};
+	        selectionSort(array);
+	        printArray(array);
+	    }
 
-        System.out.println("Original array:");
-        printArray(myArray);
+	    public static void selectionSort(int[] arr) {
+	        int n = arr.length;
 
-        // Sort the array using the sort method
-        sort(myArray);
+	        for (int i = 0; i < n - 1; i++) {
+	            int minIndex = i;
+	            for (int j = i + 1; j < n; j++) {
+	                if (arr[j] < arr[minIndex]) {
+	                    minIndex = j;
+	                }
+	            }
 
-        System.out.println("\nSorted array:");
-        printArray(myArray);
-    }
+	            // Swap the found minimum element with the first element
+	            int temp = arr[minIndex];
+	            arr[minIndex] = arr[i];
+	            arr[i] = temp;
+	        }
+	    }
 
-    public static void printArray(int[] arr) {
-        for (int value : arr) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-}
+	    public static void printArray(int[] arr) {
+	        for (int value : arr) {
+	            System.out.print(value + " ");
+	        }
+	        System.out.println();
+	    }
+	}
+
+
 
